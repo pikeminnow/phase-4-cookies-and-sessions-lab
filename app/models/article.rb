@@ -1,14 +1,6 @@
 class Article < ApplicationRecord
   belongs_to :user
 
-def show
-  session[:pageviews_remaining] ||= 0
-  cookies[:pageviews_remaining] ||= 0
-  # render json: { session: session, cookies: cookies.to_hash }
-  render json: {Article.find(params[:id]), session: session, cookies: cookies.to_hash }, status: :ok
-end
-
-
   def author
     user.username
   end
